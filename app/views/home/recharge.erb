@@ -1,0 +1,48 @@
+<h2>Operators</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operators.each do |operator| %>
+      <tr>
+        <td><%= operator.name %></td>
+        
+       
+        <td><%= link_to 'Destroy', operator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Plan', new_plan_path %>
+<h2>Plans</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Amount</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plans.each do |plan| %>
+      <tr>
+        <td><%= plan.operator_id %></td>
+        <td><%= plan.amount %></td>
+        <td><%= plan.type %></td>
+        <td><%= plan.description %></td>
+       
+        <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
+        <td><%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Operator', new_operator_path %>

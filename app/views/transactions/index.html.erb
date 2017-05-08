@@ -1,0 +1,38 @@
+<% if admin_signed_in? %>
+  
+<% end %>
+<h1>Transactions</h1>
+<div class="container"><div class="row"><div class="col-md-1"></div><div class="col-lg-10">
+<table class="table">
+  <thead>
+    <tr class="info">
+      <th>User Email</th>
+      <th>Reciever email</th>
+      <th>Amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr class="active">
+       <% @users.each do |u| %>
+          <% if u.id==transaction.user_id %>
+        <td><%= u.email %></td>
+
+        <td><%= transaction.user_email %></td>
+        <td><%= transaction.amount %></td>
+          <td><%= localize(transaction.created_at, :format => :long) %></td>  
+          <% end -%> 
+      <%end%>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+<br>
+

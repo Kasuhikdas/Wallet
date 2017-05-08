@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  operator_id: 1
+  amount: 1
+  type: 
+  description: MyText
+
+two:
+  operator_id: 1
+  amount: 1
+  type: 
+  description: MyText

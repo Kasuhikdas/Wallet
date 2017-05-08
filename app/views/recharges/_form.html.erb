@@ -1,0 +1,36 @@
+<%= form_for(recharge) do |f| %>
+  <% if recharge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(recharge.errors.count, "error") %> prohibited this recharge from being saved:</h2>
+
+      <ul>
+      <% recharge.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="field">
+    <% f.label :user_id %>
+    <%= f.hidden_field :user_id , :value => current_user.id, required: true, class:"form-control" %>
+  </div>
+   <div class="field">
+    <%= f.label :number %>
+    <%= f.text_field :number ,:required=> true,class:"form-control" ,:maxlength => 10,:minlength => 10 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :operator_id %>
+    <%= f.collection_select :operator_id,Operator.all,:id,:name,{prompt: "Select Operator"}, {class: "form-control"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.number_field :amount ,:required=> true ,class:"form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Recharge", class:"btn btn-primary"%>
+  </div>
+<% end %>
